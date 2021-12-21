@@ -5,18 +5,13 @@
       <button class="btn btn_success" @click.prevent="openModal">Create a Deck</button>
     </div>
     <ul class="deck-list">
-      <li v-for="item in decks" :key="item._id">
-        <nuxt-link class="deck" :to="`/decks/${_id}`">
-          <div class="card deck-card">
-            <img :src="item.thumbnail" :alt="`Thumbnail of ${item.name}`" />
-
-            <div class="card_body">
-              <h3>{{item.name}}</h3>
-              <p>{{item.description}}</p>
-            </div>
-          </div>
-        </nuxt-link>
-      </li>
+      <deck-list
+        v-for="deck in decks"
+        :key="deck._id"
+        :name="deck.name"
+        :thumbnail="deck.thumbnail"
+        :description="deck.description"
+      ></deck-list>
     </ul>
 
     <!-- Modal -->
@@ -58,7 +53,11 @@
 
 
 <script>
+import DeckList from "@/components/deck/DeckList.vue";
 export default {
+  components: {
+    DeckList
+  },
   data() {
     return {
       decks: [

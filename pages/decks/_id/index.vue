@@ -11,21 +11,12 @@
         <hr class="divide" />
 
         <div class="r">
-          <div class="c_3" v-for="card in cards" :key="card.id">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  :src="card.picture"
-                />
-              </div>
-
-              <div class="back-card">
-                {{card.keyword}}
-              </div>
-            </div>
-          </div>
-
-          
+          <card-list
+            v-for="card in cards"
+            :key="card._id"
+            :keyword="card.keyword"
+            :picture="card.picture"
+          />
         </div>
 
         <v-modal name="CreateDeckModal">
@@ -69,37 +60,46 @@
 
 
 <script>
+import CardList from "@/components/card/CardList.vue";
 export default {
-  data(){
-    return{
-      cards:[
+  components: {
+    CardList
+  },
+  data() {
+    return {
+      cards: [
         {
           _id: 1,
-          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
-          keyword:"Shop"
+          picture:
+            "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword: "Shop"
         },
         {
           _id: 2,
-          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
-          keyword:"Shop"
+          picture:
+            "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword: "Shop"
         },
         {
           _id: 3,
-          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
-          keyword:"Shop"
+          picture:
+            "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword: "Shop"
         },
         {
           _id: 4,
-          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
-          keyword:"Shop"
+          picture:
+            "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword: "Shop"
         },
         {
           _id: 5,
-          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
-          keyword:"Shop"
+          picture:
+            "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword: "Shop"
         }
       ]
-    }
+    };
   },
   methods: {
     openModal() {
