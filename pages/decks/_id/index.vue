@@ -11,65 +11,21 @@
         <hr class="divide" />
 
         <div class="r">
-          <div class="c_3">
+          <div class="c_3" v-for="card in cards" :key="card.id">
             <div class="card">
               <div class="front-card">
                 <img
-                  src="https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg"
-                  alt="Thumnail card"
+                  :src="card.picture"
                 />
               </div>
 
               <div class="back-card">
-                <h6>Shop</h6>
+                {{card.keyword}}
               </div>
             </div>
           </div>
 
-          <div class="c_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg"
-                  alt="Thumnail card"
-                />
-              </div>
-
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
-
-          <div class="c_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg"
-                  alt="Thumnail card"
-                />
-              </div>
-
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
-
-          <div class="c_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg"
-                  alt="Thumnail card"
-                />
-              </div>
-
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
         <v-modal name="CreateDeckModal">
@@ -114,6 +70,37 @@
 
 <script>
 export default {
+  data(){
+    return{
+      cards:[
+        {
+          _id: 1,
+          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword:"Shop"
+        },
+        {
+          _id: 2,
+          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword:"Shop"
+        },
+        {
+          _id: 3,
+          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword:"Shop"
+        },
+        {
+          _id: 4,
+          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword:"Shop"
+        },
+        {
+          _id: 5,
+          picture: "https://museums.kenosha.org/public/wp-content/uploads/sites/3/2013/11/IMG_0065.jpg",
+          keyword:"Shop"
+        }
+      ]
+    }
+  },
   methods: {
     openModal() {
       this.$modal.open({ name: "CreateDeckModal" });
