@@ -1,6 +1,6 @@
 <template>
   <li>
-    <nuxt-link class="deck" :to="`/decks/${_id}`">
+    <nuxt-link class="deck" :to="`/decks/1`">
       <div class="card deck-card">
         <img :src="thumbnail" :alt="`Thumbnail of ${name}`" />
 
@@ -20,8 +20,8 @@ export default {
       required: true
     },
     description: {
-        type: String,
-        default: ""
+      type: String,
+      default: ""
     },
     thumbnail: {
       type: String,
@@ -32,19 +32,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 li {
-    list-style: none;
-    margin-bottom: 1rem;
-    &:last-child {
-      margin-bottom: 0rem;
-    }
+  list-style: none;
+  margin-bottom: 1rem;
+  &:last-child {
+    margin-bottom: 0rem;
   }
-  .deck-card {
-    display: flex;
-    flex-direction: row;
-    height: 250px;
-    img {
-      width: 250px;
-      height: auto;
-    }
+}
+.deck-card {
+  display: flex;
+  flex-direction: row;
+  height: 250px;
+  img {
+    width: 250px;
+    height: auto;
   }
+}
 </style>

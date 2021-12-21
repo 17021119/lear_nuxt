@@ -58,32 +58,38 @@ export default {
   components: {
     DeckList
   },
-  data() {
-    return {
-      decks: [
-        {
-          _id: 1,
-          name: "Learn English",
-          description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          thumbnail: "https://wallpaperaccess.com/full/6617143.png"
-        },
-        {
-          _id: 2,
-          name: "Learn Chinese",
-          description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          thumbnail: "https://wallpaperaccess.com/full/6617143.png"
-        },
-        {
-          _id: 3,
-          name: "Learn Japanese",
-          description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          thumbnail: "https://wallpaperaccess.com/full/6617143.png"
-        }
-      ]
-    };
+  asyncData(context, callback) {
+    console.log("asyncData is excuted");
+    setTimeout(() => {
+      callback(null, {
+        decks: [
+          {
+            _id: 1,
+            name: "Learn English",
+            description:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            thumbnail: "https://wallpaperaccess.com/full/6617143.png"
+          },
+          {
+            _id: 2,
+            name: "Learn Chinese",
+            description:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            thumbnail: "https://wallpaperaccess.com/full/6617143.png"
+          },
+          {
+            _id: 3,
+            name: "Learn Japanese",
+            description:
+              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            thumbnail: "https://wallpaperaccess.com/full/6617143.png"
+          }
+        ]
+      });
+    }, 1500);
+  },
+  created() {
+    console.log("created is excuted");
   },
   methods: {
     openModal() {
