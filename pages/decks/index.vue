@@ -59,8 +59,8 @@ export default {
   components: {
     DeckList
   },
-  asyncData(context,) {
-    console.log("asyncData is excuted");
+  fetch(context,) {
+    console.log("fetch is excuted");
     console.log(context);
 
     return new Promise((resolve, reject) =>{
@@ -94,7 +94,8 @@ export default {
       // reject(new Error())
     })
     .then(data =>{
-      return data;
+      // return data;
+      context.store.dispatch("setDecks", data.decks);
     })
     .catch(e =>{
       // console.log(e);
@@ -102,10 +103,15 @@ export default {
     })
     
   },
-  created() {
-    this.$store.dispatch('setDecks', this.decks);
-    console.log("create in decks.vue");
-    console.log(this.$store.getters.decks);
+  // created() {
+  //   this.$store.dispatch('setDecks', this.decks);
+  //   console.log("create in decks.vue");
+  //   console.log(this.$store.getters.decks);
+  // },
+  computed: {
+    decks(){
+      return this.$store.getters.decks;
+    }
   },
   methods: {
     openModal() {
