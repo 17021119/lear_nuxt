@@ -8,6 +8,7 @@
       <deck-list
         v-for="deck in decks"
         :key="deck._id"
+        :id="deck._id"
         :name="deck.name"
         :thumbnail="deck.thumbnail"
         :description="deck.description"
@@ -58,11 +59,14 @@ export default {
   components: {
     DeckList
   },
-  asyncData(context, callback) {
+  asyncData(context,) {
     console.log("asyncData is excuted");
-    setTimeout(() => {
-      callback(null, {
-        decks: [
+    console.log(context);
+
+    return new Promise((resolve, reject) =>{
+      setTimeout(()=>{
+        resolve({
+          decks: [
           {
             _id: 1,
             name: "Learn English",
@@ -85,11 +89,23 @@ export default {
             thumbnail: "https://wallpaperaccess.com/full/6617143.png"
           }
         ]
-      });
-    }, 1500);
+        })
+      }, 1500)
+      // reject(new Error())
+    })
+    .then(data =>{
+      return data;
+    })
+    .catch(e =>{
+      // console.log(e);
+      context.error(e);
+    })
+    
   },
   created() {
-    console.log("created is excuted");
+    this.$store.dispatch('setDecks', this.decks);
+    console.log("create in decks.vue");
+    console.log(this.$store.getters.decks);
   },
   methods: {
     openModal() {
